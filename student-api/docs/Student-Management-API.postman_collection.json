@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "Student Management API",
+    "_postman_id": "berlin-student-api-v1",
+    "description": "Complete REST API for Student Management System\nBuilt with Laravel 11 + JWT Auth\n\nAuthor: Berlin Sugiyanto | github.com/B3rlinSugi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000/api", "type": "string" },
+    { "key": "token",    "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "🔐 Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login (Admin)",
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "const res = pm.response.json();",
+                "if (res.success) {",
+                "  pm.collectionVariables.set('token', res.data.access_token);",
+                "  console.log('Token saved:', res.data.access_token);",
+                "}"
+              ]
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@student-api.com\",\n  \"password\": \"admin123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login (User)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@student-api.com\",\n  \"password\": \"user123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Me (Current User)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/auth/me"
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/auth/refresh"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🎓 Students",
+      "item": [
+        {
+          "name": "List Students",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/students?per_page=10&page=1",
+              "query": [
+                { "key": "per_page", "value": "10" },
+                { "key": "page",     "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Students",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/students?search=andi&status=active&sort_by=gpa&sort_dir=desc",
+              "query": [
+                { "key": "search",   "value": "andi" },
+                { "key": "status",   "value": "active" },
+                { "key": "sort_by",  "value": "gpa" },
+                { "key": "sort_dir", "value": "desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter by Major & Gender",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/students?major_id=1&gender=female&per_page=5",
+              "query": [
+                { "key": "major_id", "value": "1" },
+                { "key": "gender",   "value": "female" },
+                { "key": "per_page", "value": "5" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Student Detail",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/students/1"
+          }
+        },
+        {
+          "name": "Create Student (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" }
+            ],
+            "url": "{{base_url}}/students",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nim\": \"10121099\",\n  \"name\": \"Zara Kusuma\",\n  \"email\": \"zara@student.ac.id\",\n  \"phone\": \"081234567890\",\n  \"gender\": \"female\",\n  \"birth_date\": \"2002-05-15\",\n  \"address\": \"Jl. Sudirman No. 10, Jakarta\",\n  \"major_id\": 1,\n  \"status\": \"active\",\n  \"semester\": 3,\n  \"gpa\": 3.85\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Student (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" }
+            ],
+            "url": "{{base_url}}/students/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"semester\": 7,\n  \"gpa\": 3.80,\n  \"status\": \"active\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Student — Soft (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/students/1"
+          }
+        },
+        {
+          "name": "List Trashed Students (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/students/trashed/list"
+          }
+        },
+        {
+          "name": "Restore Student (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/students/1/restore"
+          }
+        },
+        {
+          "name": "Force Delete Student (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/students/1/force"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏫 Majors",
+      "item": [
+        {
+          "name": "List Majors",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/majors"
+          }
+        },
+        {
+          "name": "Get Major Detail",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/majors/1"
+          }
+        },
+        {
+          "name": "Create Major (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" }
+            ],
+            "url": "{{base_url}}/majors",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"DS\",\n  \"name\": \"Data Science\",\n  \"faculty\": \"Fakultas Teknologi Industri\",\n  \"description\": \"Program studi ilmu data dan kecerdasan buatan.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Major (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" }
+            ],
+            "url": "{{base_url}}/majors/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Program studi unggulan bidang rekayasa perangkat lunak.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Major (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{base_url}}/majors/1"
+          }
+        }
+      ]
+    }
+  ]
+}
