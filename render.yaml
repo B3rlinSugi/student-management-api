@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: student-api
+    env: php
+    buildCommand: "composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+    startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        sync: false
+      - fromDatabase:
+          name: student-db
+          property: connectionString
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: JWT_SECRET
+        generateValue: true
+    autoDeploy: false
+databases:
+  - name: student-db
+    databaseName: student_api
+    user: student_user
