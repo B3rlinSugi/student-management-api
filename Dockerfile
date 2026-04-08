@@ -13,13 +13,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/app
 
 # Copy composer files first (cache layer)
-COPY student-api/composer.json student-api/composer.lock ./
+COPY composer.json composer.lock ./
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Copy the full Laravel application
-COPY student-api/ .
+COPY . .
 
 # Set permissions for storage and cache
 RUN chmod -R 775 storage bootstrap/cache
