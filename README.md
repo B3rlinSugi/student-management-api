@@ -324,19 +324,27 @@ student-management-api/
 | Soft Delete | Laravel SoftDeletes | Non-destructive delete workflow |
 
 ---
+---
+
+## ⚙️ DevOps & Deployment
+
+- **Infrastruktur**: [Railway](https://railway.app)
+- **Containerization**: Menggunakan **Docker** untuk standardisasi lingkungan produksi (PHP-FPM + Nginx).
+- **Automation**: Pipeline CI/CD yang secara otomatis mengambil variabel lingkungan untuk konektivitas database yang aman.
+- **Observability**: Health checks yang terintegrasi ke dalam dashboard portofolio utama.
+
+---
 
 ## 👤 Author
 
 <div align="center">
 
-**Berlin Sugiyanto**
+**Berlin Sugiyanto Hutajulu**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-berlinsugi-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/berlinsugi)
 [![Portfolio](https://img.shields.io/badge/Portfolio-berlinsugi.vercel.app-4e73df?style=flat-square&logo=vercel)](https://berlinsugi.vercel.app)
 [![Email](https://img.shields.io/badge/Email-berlinsugiyanto23%40gmail.com-D14836?style=flat-square&logo=gmail)](mailto:berlinsugiyanto23@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-B3rlinSugi-181717?style=flat-square&logo=github)](https://github.com/B3rlinSugi)
-
-</div>
 
 ---
 
