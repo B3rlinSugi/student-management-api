@@ -2,6 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=180&section=header&text=Student%20Management%20API&fontSize=38&fontColor=e94560&animation=fadeIn&fontAlignY=38&desc=RESTful%20API%20%7C%20Laravel%2011%20%7C%20JWT%20Auth%20%7C%20RBAC%20%7C%20Soft%20Delete&descAlignY=55&descColor=a8b2d8" />
 
+<a href="https://readme-typing-svg.herokuapp.com"><img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=15&duration=3000&pause=1000&color=E94560&center=true&vCenter=true&width=535&lines=🚀+High+Performance+Laravel+11+REST+API;🛡️+Stateless+Tokenized+Auth+(JWT);🗑️+Soft-Delete+%26+Trash+Data+Management;🔎+Advanced+Multi-Column+Query+%26+Filters" alt="Typing SVG" /></a>
 [![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
