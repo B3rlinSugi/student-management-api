@@ -1,33 +1,17 @@
 <div align="center">
-  <br />
-  <h1>🎓 Student Management API</h1>
-  <p>
-    <strong>A Production-Grade RESTful API with Secure JWT Authentication</strong>
-  </p>
-  <p>
-    A robust, server-side REST application built to manage academic records safely with strict Role-Based Access Control and Soft Deletion mechanisms.<br><br>
-    <strong>🚀 Tech Stack:</strong> Laravel 9, PHP 8, MySQL, JWT Authentication
-  </p>
-
-  <p>
-    <img src="https://img.shields.io/badge/Language-PHP_8-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8" />
-    <img src="https://img.shields.io/badge/Framework-Laravel_9-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" />
-    <img src="https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
-    <img src="https://img.shields.io/badge/Security-JWT_Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
-  </p>
-
-  <p>
-    <img src="https://img.shields.io/badge/Status-Active_Development-success?style=flat-square" alt="Status" />
-    <img src="https://img.shields.io/badge/Version-v1.0.0-blue?style=flat-square" alt="Version" />
-    <img src="https://img.shields.io/github/last-commit/B3rlinSugi/student-management-api?style=flat-square" alt="Last Updated" />
-    <img src="https://img.shields.io/github/stars/B3rlinSugi/student-management-api?style=flat-square" alt="Stars" />
-    <img src="https://img.shields.io/github/issues/B3rlinSugi/student-management-api?style=flat-square" alt="Issues" />
-    <img src="https://img.shields.io/github/license/B3rlinSugi/student-management-api?style=flat-square" alt="License" />
-  </p>
-  <p>
-    <a href="https://berlinsugi.vercel.app/docs-student-api.html" target="_blank"><strong>View API Documentation</strong></a>
-  </p>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=250&section=header&text=Student%20Management%20API&fontSize=55&fontAlignY=35&desc=Production-Grade%20RESTful%20API&descAlignY=55&descAlign=50" />
+  <br /><br />
+  <a href="https://berlinsugi.vercel.app/docs-student-api.html">
+    <img src="https://img.shields.io/badge/API_Docs-%E2%86%92-FF6B00?style=for-the-badge&logo=postman" alt="API Docs" />
+  </a>
 </div>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&style=for-the-badge" alt="PHP 8" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Laravel-9.x-FF2D20?logo=laravel&style=for-the-badge" alt="Laravel" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/MySQL-DB-4479A1?logo=mysql&style=for-the-badge" alt="MySQL" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Security-JWT_Auth-black?logo=jsonwebtokens&style=for-the-badge" alt="JWT" /></a>
+</p>
 
 ---
 
